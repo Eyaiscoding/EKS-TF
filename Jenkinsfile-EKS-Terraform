@@ -11,7 +11,10 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                 git branch: 'main', url: 'https://github.com/Eyaiscoding/EKS-TF.git'
-                sh 'apt update && apt install terraform'
+                sh ''' 
+                whoami
+                apt update
+                apt install terraform '''
             }
         }
         stage('Initializing Terraform') {
