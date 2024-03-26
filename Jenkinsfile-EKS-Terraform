@@ -15,10 +15,12 @@ pipeline {
         }
         stage('Initializing Terraform') {
             steps {
-                withAWS(credentials: 'ACCOUNT_ID', region: 'us-east-1') {
+                withAWS(credentials: '161272974421', region: 'us-east-1') {
                 dir('EKS-TF') {
                     script {
-                        sh 'pwd'
+                        sh ''' 
+                            pwd
+                        '''
                     }
                 }
                 }
