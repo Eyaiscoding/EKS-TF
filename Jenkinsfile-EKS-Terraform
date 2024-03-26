@@ -19,7 +19,10 @@ pipeline {
                 dir('EKS-TF') {
                     script {
                         sh ''' 
-                            pwd
+                        export TF_LOG="TRACE"
+                        export TF_LOG_PATH="./terraform-debug.log"
+                        terraform init 
+                        cat terraform-debug.log
                         '''
                     }
                 }
@@ -28,7 +31,7 @@ pipeline {
         }
         stage('Validate Terraform Code') {
             steps {
-                withAWS(credentials: 'ACCOUNT_ID', region: 'us-east-1') {
+                withAWS(credentials: '161272974421', region: 'us-east-1') {
                 dir('EKS-TF') {
                     script {
                         sh 'terraform validate'
@@ -39,7 +42,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                withAWS(credentials: 'ACCOUNT_ID', region: 'us-east-1') {
+                withAWS(credentials: '161272974421', region: 'us-east-1') {
                 dir('EKS-TF') {
                     script {
                         sh "terraform plan -var-file=${params.'File-Name'}"
@@ -50,7 +53,7 @@ pipeline {
         }
         stage('Terraform Action') {
             steps {
-                withAWS(credentials: 'ACCOUNT_ID', region: 'us-east-1') { 
+                withAWS(credentials: '161272974421', region: 'us-east-1') { 
                     dir('EKS-TF') {
                         script {
                             echo "${params.'Terraform-Action'}" 
