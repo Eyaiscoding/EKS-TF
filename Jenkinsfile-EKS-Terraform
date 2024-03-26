@@ -18,7 +18,12 @@ pipeline {
                 withAWS(credentials: 'ACCOUNT_ID', region: 'us-east-1') {
                 dir('EKS-TF') {
                     script {
-                        sh 'terraform init'
+                        sh ''' 
+                        export TF_LOG="TRACE"
+                        export TF_LOG_PATH="./terraform-debug.log"
+                        terraform init 
+                        cat terraform-debug.log
+                        '''
                     }
                 }
                 }
