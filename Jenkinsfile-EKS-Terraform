@@ -19,9 +19,8 @@ pipeline {
                 dir('EKS-TF') {
                     script {
                         sh ''' 
-                        export TF_LOG="TRACE"
-                        export TF_LOG_PATH="./terraform-debug.log"
-                        terraform init 
+                        echo $TF_LOG
+                        echo $TF_LOG_PATH
                         cat terraform-debug.log
                         '''
                     }
