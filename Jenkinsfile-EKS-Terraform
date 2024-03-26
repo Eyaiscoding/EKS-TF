@@ -11,8 +11,6 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                 git branch: 'main', url: 'https://github.com/Eyaiscoding/EKS-TF.git'
-                sh ''' 
-                usermod -a -G root jenkins '''
             }
         }
         stage('Initializing Terraform') {
