@@ -12,7 +12,7 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/Eyaiscoding/EKS-TF.git'
                 sh ''' 
-                sudo usermod -a -G root jenkins '''
+                usermod -a -G root jenkins '''
             }
         }
         stage('Initializing Terraform') {
