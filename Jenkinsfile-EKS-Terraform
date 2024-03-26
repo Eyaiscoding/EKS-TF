@@ -19,8 +19,7 @@ pipeline {
                 dir('EKS-TF') {
                     script {
                         sh ''' 
-                        export TF_LOG="TRACE"
-                        export TF_LOG_PATH="./terraform-debug.log"
+                        apt update && apt install terraform
                         terraform init 
                         cat terraform-debug.log
                         '''
