@@ -19,11 +19,7 @@ pipeline {
                 dir('EKS-TF') {
                     script {
                         sh ''' 
-                        su -
-                        whoami
-                        chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
-                        chown root:root /etc/sudo.conf
-                        echo "done"
+                        terraform init
                         '''
                     }
                 }
