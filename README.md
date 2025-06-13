@@ -16,23 +16,6 @@ The infrastructure is deployed using **Terraform** and includes:
 
 ---
 
-## 🗂 Project Structure
-
-EKS-TF/
-├── modules/                # Optional: reusable Terraform modules
-├── jenkins.tf              # Jenkins and SonarQube EC2 provisioning
-├── vpc.tf                  # VPC, subnets, route tables, gateways
-├── eks.tf                  # EKS cluster, node groups, IAM roles
-├── iam.tf                  # IAM roles and policies for services
-├── monitoring.tf           # Prometheus, Grafana, Datadog setup
-├── variables.tf            # Input variable declarations
-├── outputs.tf              # Output values for use after deployment
-├── providers.tf            # AWS provider setup
-└── main.tf                 # Root module tying everything together
-
-
----
-
 ## ⚙️ Prerequisites
 
 - Terraform >= 1.3
@@ -42,7 +25,7 @@ EKS-TF/
 
 ---
 
-## 🚀 Deployment Steps
+### 🚀 Deployment Steps
 
 ```bash
 # 1. Clone the repo
